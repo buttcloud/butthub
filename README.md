@@ -51,6 +51,14 @@ alias pub_sbot="docker-machine ssh $(echo -n $PUB_NODE) docker run -i --rm --ini
 pub_sbot whoami
 ```
 
+spin down the machines (`stop` or `rm`)
+
+```shell
+docker-machine stop manager
+docker-machine stop worker0
+docker-machine stop worker1
+```
+
 ## resources
 
 - [Docker Get Started, Part 4: Swarms](https://docs.docker.com/get-started/part4/)
