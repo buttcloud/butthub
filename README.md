@@ -41,14 +41,9 @@ eval $(docker-machine env manager)
 ```
 
 ```shell
-docker network create --driver=overlay web
-
-STACK_NAME=hub docker stack deploy --compose-file ../buttpub/stacks/hub.yml hub
-STACK_NAME=pub docker stack deploy --compose-file ../buttpub/stacks/pub.yml pub
-
-PUB_NODE=$(docker service ps pub_peer-server --format "{{.Node}}")
-alias pub_sbot="docker-machine ssh $(echo -n $PUB_NODE) docker run -i --rm --init -v pub_ssb:/home/node/.ssb --net pub_ssb -e ssb_host=pub_peer-server buttcloud/buttpub-peer-client"
-pub_sbot whoami
+npm i -g docker-up
+node . > stack.json
+docker-up stack up stack.json
 ```
 
 spin down the machines (`stop` or `rm`)
@@ -59,6 +54,13 @@ docker-machine stop worker0
 docker-machine stop worker1
 ```
 
+reset your local docker environment
+
+```
+eval $(docker-machine env -u)
+```
+
 ## resources
 
 - [Docker Get Started, Part 4: Swarms](https://docs.docker.com/get-started/part4/)
+- [Docker Swarm With Docker Machine, Scripts](https://mmorejon.github.io/en/blog/docker-swarm-with-docker-machine-scripts/)

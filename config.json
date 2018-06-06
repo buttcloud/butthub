@@ -1,0 +1,10 @@
+{
+  "hub": {
+  },
+  "pubs": [
+    {
+      "name": "test",
+      "domain": "butt.nz"
+    }
+  ]
+}
