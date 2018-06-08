@@ -20,7 +20,6 @@ start the swarm with the manager
 docker-machine ssh manager docker swarm init --advertise-addr $(docker-machine ip manager)
 ```
 
-
 join the swarm with each worker
 
 ```shell
@@ -41,9 +40,23 @@ eval $(docker-machine env manager)
 ```
 
 ```shell
-npm i -g docker-up
-node . > stack.json
-docker-up stack up stack.json
+npm install
+npm run stack
+npm run up
+```
+
+check out the stack!
+
+```shell
+docker service ls
+```
+
+wait until the services are replicated (they are probably downloading images)
+
+spin down the stack
+
+```shell
+npm run down
 ```
 
 spin down the machines (`stop` or `rm`)
